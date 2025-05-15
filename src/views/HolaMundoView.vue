@@ -1,5 +1,5 @@
 <template>
-    <HolaMundo></HolaMundo>
+    <HolaMundo/>
 </template>
 
 <script>
