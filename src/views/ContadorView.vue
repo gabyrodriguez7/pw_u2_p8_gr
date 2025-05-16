@@ -1,19 +1,29 @@
 <template>
     <div>
-        <Contador/>
+        <Contador title="Titulo 1" v-bind:value="1" />
+        <Contador title="Titulo 2" :value="method1()" />
+        <Contador title="Titulo 3"  />
     </div>
 </template>
 
 <script>
-import Contador from '@/components/Contador.vue';
+import Contador from "@/components/Contador.vue";
 
 export default {
     components: {
         Contador,
     },
+    data() {
+        return { numero: 20 };
+    },
+    methods:{
+        method1(){
+        return 2+9;
+    }
+    }
+    
 
-
-}
+};
 </script>
 
 <style></style>

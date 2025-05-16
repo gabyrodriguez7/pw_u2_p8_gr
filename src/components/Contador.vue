@@ -1,10 +1,10 @@
 <template>
     <div class="container">
-        <h1>Contador</h1>
-        <p>{{ numero }} <sup>2</sup> = {{ calCuadrado}}</p>
+        <h1>{{ title }}</h1>
+        <p>{{ numero }} <sup>2</sup> = {{ calCuadrado }}</p>
         <div>
             <button v-on:click="incrementar()">+1</button>
-            <button v-on:click="decrementar()">-1</button>
+            <button @click="decrementar()">-1</button>
         </div>
 
         <!--<p>{{ numero + 1 }}</p>
@@ -21,38 +21,63 @@
 
 <script>
 export default {
+    /* props: ["title", "value"],*/
+    props: {
+        title: String,
+        value: {
+            type: Number,
+            required: false,
+            default: 100,
+            validator(value) {
+                return value > 0;
+            }
+        },
+        p1: Boolean,
+        p2: Array,
+        p3: Object,
+        p4: Function,
+        p5: Date,
+        p6: Symbol
+    },
     data() {
         return {
-            numero: 5,
-            texto: 'Gabriela Rodríguez',
+            numero: this.value,
+            titulo: "Contador",
+            texto: "Gabriela Rodríguez",
             activo: true,
             usuario: {
-                nombre: 'Gaby',
+                nombre: "Gaby",
                 edad: 25,
-                genero: 'F'
+                genero: "F",
             },
-            arreglo: ['Amarillo', 'Azul'],
+            arreglo: ["Amarillo", "Azul"],
         };
     },
     methods: {
         calcularCuadrado() {
-            console.log('Entro al metodo');
+            console.log("Entro al metodo");
             return this.numero * this.numero;
         },
-        incrementar(){
+        incrementar() {
             this.numero++;
         },
-        decrementar(){
+        decrementar() {
             this.numero--;
-        }
+        },
     },
     computed: {
         calCuadrado() {
-            console.log('Entro al propiedad computada');
+            console.log("Entro al propiedad computada");
             return this.numero * this.numero;
-        }
+        },
     },
-
+    created (){
+        if(this.value > 0){
+            console.log('Es correcto')
+        }else{
+            throw new Error('Error el valor no puede ser menor que cero');
+        }
+    }
 };
 </script>
 
