@@ -1,5 +1,8 @@
 <template>
     <div class="container">
+        <div v-show="mostrar">
+            <h1>Estudiante Guardado</h1>
+            </div>
         <label for="id_nombre">Nombre: </label>
         <input v-model="nuevoNombre" id="id_nombre" type="text" />
 
@@ -17,12 +20,33 @@
 
         <button v-on:click=" agregarEstudiante()">Agregar</button>
 
-        <ul>
+        <!--<ul>
             <li v-for="{ nombre, apellido, edad, fechaNacimiento, email } in lista" :key="nombre">Nombre: {{ nombre }} -
                 Apellido: {{ apellido }} - Edad: {{ edad }} - Fecha de nacimiento: {{ fechaNacimiento }} - Email: {{
                     email }}</li>
 
-        </ul>
+        </ul>-->
+
+        <table>
+            <thead>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+                <th>Fecha de nacimiento</th>
+                <th>email</th>
+                <th>Boton</th>
+            </thead>
+            <tbody>
+                <tr v-for="{ nombre, apellido, edad, fechaNacimiento, email } in lista" :key="nombre">
+                    <td>{{ nombre }}</td>
+                    <td>{{ apellido }}</td>
+                    <td>{{ edad }}</td>
+                    <td>{{ fechaNacimiento }}</td>
+                    <td>{{ email }}</td>
+                    <td><button>ver</button></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </template>
 
@@ -42,7 +66,8 @@ export default {
             { nombre: "Belen", apellido: "Castillo", edad: 21, fechaNacimiento: "2004-07-05", email: "belenc@uce.edu.ec" },
             { nombre: "Juan", apellido: "Teran", edad: 20, fechaNacimiento: "2005-12-12", email: "juant@uce.edu.ec" },
             { nombre: "Luis", apellido: "Boada", edad: 19, fechaNacimiento: "2006-10-15", email: "luisb@uce.edu.ec" }
-            ]
+            ],
+            mostrar: false,
         };
     },
     methods: {
@@ -56,6 +81,10 @@ export default {
             }
             /*this.lista.unshift(nuevo);*/
             this.lista.push(nuevo);
+            this.mostrar=true;
+            this.nombre=null;
+
+            setTimeout(()=>{this.mostrar=false;},3000);
         },
     }
 
@@ -100,6 +129,7 @@ button {
     cursor: pointer;
     width: 200px;
 }
+
 ul {
     list-style: none;
     margin-top: 30px;
@@ -114,4 +144,48 @@ li {
     font-size: 16px;
 }
 
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.95rem;
+    background-color: #6eb9cf;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 25px;
+
+}
+
+thead {
+    background-color: #f4f6f8;
+}
+
+thead th {
+    text-align: left;
+    padding: 15px;
+    color: #333;
+    font-weight: 600;
+    border-bottom: 2px solid #a6bbd6;
+    text-align: center;
+}
+
+tbody tr {
+    transition: background-color 0.2s;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #d2e1f0;
+}
+
+tbody tr:hover {
+    background-color: #eef3f9;
+}
+
+tbody td {
+    padding: 15px;
+    border-bottom: 1px solid #e3e6ea;
+    color: #444;
+}
 </style>
