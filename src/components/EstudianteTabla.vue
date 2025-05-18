@@ -54,6 +54,7 @@
 export default {
     data() {
         return {
+            mostrar: false,
             nuevoNombre: null,
             nuevoApellido: null,
             nuevoEdad: null,
@@ -66,9 +67,9 @@ export default {
             { nombre: "Belen", apellido: "Castillo", edad: 21, fechaNacimiento: "2004-07-05", email: "belenc@uce.edu.ec" },
             { nombre: "Juan", apellido: "Teran", edad: 20, fechaNacimiento: "2005-12-12", email: "juant@uce.edu.ec" },
             { nombre: "Luis", apellido: "Boada", edad: 19, fechaNacimiento: "2006-10-15", email: "luisb@uce.edu.ec" }
-            ],
-            mostrar: false,
+            ]  
         };
+        
     },
     methods: {
         agregarEstudiante() {
