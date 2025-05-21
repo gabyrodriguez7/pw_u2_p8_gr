@@ -24,14 +24,6 @@
         <input v-model="nuevoGenero" id="id_genero" type="text">
         <span v-if="errores.genero" class="error">Campo obligatorio</span>
 
-        <label for="id_peso">Peso: </label>
-        <input v-model="nuevoPeso" id="id_peso" type="number" min="0">
-        <span v-if="errores.peso" class="error">Campo obligatorio</span>
-
-        <label for="id_dueno">Dueño: </label>
-        <input v-model="nuevoDueno" id="id_dueno" type="text">
-        <span v-if="errores.dueno" class="error">Campo obligatorio</span>
-
         <button @click="validarYAgregar">Agregar</button>
 
         <table>
@@ -42,19 +34,15 @@
                     <th>Raza</th>
                     <th>Edad</th>
                     <th>Género</th>
-                    <th>Peso</th>
-                    <th>Dueño</th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="{ nombre, especie, raza, edad, genero, peso, dueno } in mascotas" :key="nombre">
+                <tr v-for="{ nombre, especie, raza, edad, genero } in mascotas" :key="nombre">
                     <td>{{ nombre }}</td>
                     <td>{{ especie }}</td>
                     <td>{{ raza }}</td>
                     <td>{{ edad }}</td>
                     <td>{{ genero }}</td>
-                    <td>{{ peso }}</td>
-                    <td>{{ dueno }}</td>
                 </tr>
             </tbody>
         </table>
@@ -71,8 +59,6 @@ export default {
             nuevoRaza: "",
             nuevoEdad: null,
             nuevoGenero: "",
-            nuevoPeso: null,
-            nuevoDueno: "",
             errores: {
                 nombre: false,
                 especie: false,
@@ -88,36 +74,28 @@ export default {
                     "especie": "Perro",
                     "raza": "Labrador Retriever",
                     "edad": 3,
-                    "genero": "Macho",
-                    "peso": 25.4,
-                    "dueno": "Carlos Pérez"
+                    "genero": "Macho"
                 },
                 {
                     "nombre": "Luna",
                     "especie": "Gato",
                     "raza": "Siamesa",
                     "edad": 2,
-                    "genero": "Hembra",
-                    "peso": 4.2,
-                    "dueno": "Sofía Gómez"
+                    "genero": "Hembra"
                 },
                 {
                     "nombre": "Rocky",
                     "especie": "Conejo",
                     "raza": "Cabeza de León",
                     "edad": 1,
-                    "genero": "Macho",
-                    "peso": 1.8,
-                    "dueno": "Andrés Rodríguez"
+                    "genero": "Macho"
                 },
                 {
                     "nombre": "Polly",
                     "especie": "Ave",
                     "raza": "Loro Amazónico",
                     "edad": 5,
-                    "genero": "Hembra",
-                    "peso": 0.9,
-                    "dueno": "Mariana Flores"
+                    "genero": "Hembra"
                 }
             ]
         }
@@ -130,8 +108,6 @@ export default {
                 raza: !this.nuevoRaza,
                 edad: this.nuevoEdad === null || this.nuevoEdad === '',
                 genero: !this.nuevoGenero,
-                peso: this.nuevoPeso === null || this.nuevoPeso === '',
-                dueno: !this.nuevoDueno
             };
 
             const tieneErrores = Object.values(this.errores).some(e => e);
@@ -142,9 +118,7 @@ export default {
                 especie: this.nuevoEspecie,
                 raza: this.nuevoRaza,
                 edad: this.nuevoEdad,
-                genero: this.nuevoGenero,
-                peso: this.nuevoPeso,
-                dueno: this.nuevoDueno
+                genero: this.nuevoGenero
             };
 
             this.mascotas.push(nuevaMascota);
@@ -159,8 +133,6 @@ export default {
             this.nuevoRaza = "";
             this.nuevoEdad = null;
             this.nuevoGenero = "";
-            this.nuevoPeso = null;
-            this.nuevoDueno = "";
         }
     }
 }
