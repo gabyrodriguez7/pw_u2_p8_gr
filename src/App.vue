@@ -3,7 +3,8 @@
   <!--<ContadorView/>-->
   <!-- <EstudianteView />-->
   <!--<EstudianteTablaView />-->
-  <MascotaView/>
+  <!--<MascotaView/>-->
+  <PreguntaView/>
 </template>
 
 <script>
@@ -12,11 +13,12 @@ import ContadorView from '@/views/ContadorView.vue';
 import EstudianteView from '@/views/EstudianteView.vue';
 import EstudianteTablaView from '@/views/EstudianteTablaView.vue'
 import MascotaView from '@/views/MascotaView.vue'
+import PreguntaView from '@/views/PreguntaView.vue'
 export default {
   name: 'App',
   components: {
     HolaMundoView, ContadorView, EstudianteView, EstudianteTablaView,
-    MascotaView
+    MascotaView,PreguntaView,
   },
 }
 </script>
